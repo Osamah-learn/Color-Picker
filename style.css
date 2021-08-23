@@ -2,5 +2,123 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
+}
+
+body{
+    font-family: 'Coming Soon', cursive;
+	background: linear-gradient(-45deg, #23a6d5,#23d5ab, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	
+}
+
+path,i,svg{
+    pointer-events: none;
+}
+
+
+.colors{
+    height: 100vh;
+    color: white;
+    display: flex;
+}
+
+.color{
+    display: flex;
+    flex:1;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.color h2{
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.sliders{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    bottom: 0%;
+    padding: 1rem;
+    width: 80%;
+    border-top-right-radius: 1rem;
+    pointer-events: none;
+    opacity: 0;
+    /* We are adding adjustment class */
+   transform: translateY(50%); 
+   transition: all ease-in-out;
+    
+}
+.sliders.active{
+    opacity: 1;
+    transform: translateY(0%);
+    pointer-events: all;
+}
+.sliders button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 166, 0);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    
+    cursor: pointer;
+    font-weight: bold;
+}
+.controls{
+    display: flex;
+    flex-direction: column;
+}
+
+.panel{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+
+.panel button {
+    font-size: 1.2rem;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: rgba(241, 170, 38, 0.979);
+    color: white;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border:none;
+    cursor: pointer;
+}
+
+.panel p{
+    color: white;
+    text-align: center;
+}
+
+
+.adjust,.lock{
+    font-size: 2rem;
+    border: none;
+    background-color: transparent;
+    margin: 2rem 0rem;
+    color: rgba(241, 245, 238, 0.657);
+   
+}
+/* Frame Keys */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
