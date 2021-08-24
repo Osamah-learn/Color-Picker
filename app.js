@@ -37,7 +37,19 @@ class CoolorPicker {
             // We set into Hex text the random color also we make it as abckground
             div.style.backgroundColor = randomColor;
             hexText.innerHTML = randomColor;
+            // we check the luminance of the color 
+            this.checkTextContrast(randomColor, hexText)
         })
+    }
+
+    checkTextContrast(color, text) {
+        const luminance = chroma(color).luminance();
+        if (luminance > 0.5) {
+            text.style.color = 'black'
+        } else {
+            text.style.color = "white"
+        }
+
     }
 }
 
