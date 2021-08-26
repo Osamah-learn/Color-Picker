@@ -39,7 +39,17 @@ class CoolorPicker {
             hexText.innerHTML = randomColor;
             // we check the luminance of the color 
             this.checkTextContrast(randomColor, hexText)
+
+            //Initial Colorize Sliders
+            const color = chroma(randomColor)
+            const sliders = div.querySelectorAll('.sliders input')
+            const hue = sliders[0];
+            const brightness = sliders[1];
+            const saturation = sliders[2];
+            this.colorizeSliders(color, hue, brightness, saturation)
         })
+
+
     }
 
     checkTextContrast(color, text) {
@@ -51,6 +61,33 @@ class CoolorPicker {
         }
 
     }
+    colorizeSliders(color, hue, brightness, saturation) {
+        //Scale Saturation
+        const noSat = color.set('hsl.s', 0);
+        const fullSat = color.set('hsl.s', 1);
+        const scaleSat = chroma.scale([noSat, color, fullSat]);
+
+        //Scale Brightness
+        const midBright = color.set('hsl.l', 0.5);
+        const scaleBright = chroma.scale(['black', midBright, 'white'])
+
+        // Scale hue
+        /* Its all colors no need to sue chroma functions  */
+
+
+
+
+        // update inputs colors 
+        brightness.style.background = `linear-gradient(to right,
+                ${scaleBright(0)},${scaleBright(0.5)},${scaleBright(1)})`;
+
+        saturation.style.background = `linear-gradient(to right,
+                    ${scaleSat(0)},${scaleSat(1)})`;
+
+        hue.style.backgroundImage = `linear-gradient(to right, #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
+    }
+
+
 }
 
 
@@ -60,4 +97,4 @@ class CoolorPicker {
 
 
 let randomHex = new CoolorPicker();
-console.log(randomHex.randomColors());
+randomHex.randomColors()

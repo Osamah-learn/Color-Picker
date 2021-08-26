@@ -48,11 +48,11 @@ path,i,svg{
     padding: 1rem;
     width: 80%;
     border-top-right-radius: 1rem;
-    pointer-events: none;
-    opacity: 0;
+    /* pointer-events: none; */
+   /*  opacity: 0; */
     /* We are adding adjustment class */
-   transform: translateY(50%); 
-   transition: all ease-in-out;
+/*    transform: translateY(50%); 
+   transition: all ease-in-out; */
     
 }
 .sliders.active{
@@ -109,6 +109,18 @@ path,i,svg{
     margin: 2rem 0rem;
     color: rgba(241, 245, 238, 0.657);
    
+}
+
+
+
+/* Slider stuff */
+input[type="range"]{
+    -webkit-appearance: none;
+    margin: 1rem 0rem;
+    width: 100%;
+    position: relative;
+    border-radius: 1rem;
+    cursor: pointer;
 }
 /* Frame Keys */
 @keyframes gradient {
