@@ -31,7 +31,7 @@
                 <input type="range" min="0" max="1" step="0.01" name="brightness" class="bright-input" data-brigth="0">
 
                 <span>Saturation</span>
-                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-brigth="0">
+                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-Satu="0">
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <input type="range" min="0" max="1" step="0.01" name="brightness" class="bright-input" data-brigth="1">
 
                 <span>Saturation</span>
-                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-brigth="1">
+                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-Satu="1">
             </div>
         </div>
         <!-- Third Color -->
@@ -70,7 +70,7 @@
                 <input type="range" min="0" max="1" step="0.01" name="brightness" class="bright-input" data-brigth="2">
 
                 <span>Saturation</span>
-                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-brigth="2">
+                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-Satu="2">
             </div>
         </div>
         <!-- Fourth Color -->
@@ -89,7 +89,7 @@
                 <input type="range" min="0" max="1" step="0.01" name="brightness" class="bright-input" data-brigth="3">
 
                 <span>Saturation</span>
-                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-brigth="3">
+                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-Satu="3">
             </div>
         </div>
         <!-- Fifth Color -->
@@ -108,49 +108,51 @@
                 <input type="range" min="0" max="1" step="0.01" name="brightness" class="bright-input" data-brigth="4">
 
                 <span>Saturation</span>
-                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-brigth="4">
+                <input type="range" min="0" max="1" step="0.01" name="Saturation" class="Satu-input" data-Satu="4">
             </div>
         </div>
     </div>
-<div class="panel">
-    <div class="library-panel">
-        <button class="library"><i class="fas fa-book-open"></i></button>
-        <p>Library</p>
+    <div class="panel">
+        <div class="library-panel">
+            <button class="library"><i class="fas fa-book-open"></i></button>
+            <p>Library</p>
+        </div>
+        <div class="generate-panel">
+            <button class="generate"><i class="fas fa-sync"></i></button>
+            <p>Generate</p>
+        </div>
+        <div class="save-panel">
+            <button class="save"><i class="fas fa-save"></i></button>
+            <p>Save</p>
+        </div>
     </div>
-    <div class="generate-panel">
-        <button class="generate"><i class="fas fa-sync"></i></button>
-        <p>Generate</p>
-    </div>
-    <div class="save-panel">
-        <button class="save"><i class="fas fa-save"></i></button>
-        <p>Save</p>
-    </div>
-</div>
 
-<div class="copy-container">
-    <div class="copy-popup">
-        <h3>Copied to clipboard!</h3>
-        <h4>&#128512;</h4>
+    <div class="copy-container">
+        <div class="copy-popup">
+            <h3>Copied to clipboard!</h3>
+            <h4>&#128512;</h4>
+        </div>
     </div>
-</div>
 
-<div class="save-container">
-    <div class="save-popup">
-        <button class="close-save">X</button>
-        <h4>Give a name to your pallet</h4>
-        <input type="text" maxlength="35" class="save-name">
-        <button class="submit-save" type="submit"><i class="fas fa-save"></i></button>
+    <div class="save-container">
+        <div class="save-popup">
+            <button class="close-save">X</button>
+            <h4>Give a name to your pallet</h4>
+            <input type="text" maxlength="35" class="save-name">
+            <button class="submit-save" type="submit"><i class="fas fa-save"></i></button>
+        </div>
     </div>
-</div>
-<library class="container">
-    <div class="library-popup">
-        <button class="close-library"><i class="far fa-window-close"></i></button>
-        <h4>Pick your pallet</h4>
-    </div>
-</library>
+    <library class="container">
+        <div class="library-popup">
+            <button class="close-library"><i class="far fa-window-close"></i></button>
+            <h4>Pick your pallet</h4>
+        </div>
+    </library>
 
-<!-- Chroma Js Library for colors -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js" integrity="sha512-yocoLferfPbcwpCMr8v/B0AB4SWpJlouBwgE0D3ZHaiP1nuu5djZclFEIj9znuqghaZ3tdCMRrreLoM8km+jIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Chroma Js Library for colors -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"
+        integrity="sha512-yocoLferfPbcwpCMr8v/B0AB4SWpJlouBwgE0D3ZHaiP1nuu5djZclFEIj9znuqghaZ3tdCMRrreLoM8km+jIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Link Javascript -->
     <script src="app.js"></script>
 </body>

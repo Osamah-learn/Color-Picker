@@ -1,13 +1,17 @@
 
+this.colorDivs = document.querySelectorAll('.color');
+
 
 class CoolorPicker {
-    constructor() {
+    constructor(colorDivs) {
         this.colorDivs = document.querySelectorAll('.color');
         this.currentHexes = document.querySelectorAll('.color h2');
         this.generateBtn = document.querySelectorAll('.generate');
         this.sliders = document.querySelectorAll('input[type="range"]')
         this.initialColors;
     }
+
+
 
 
     //Methods
@@ -74,9 +78,6 @@ class CoolorPicker {
         // Scale hue
         /* Its all colors no need to sue chroma functions  */
 
-
-
-
         // update inputs colors 
         brightness.style.background = `linear-gradient(to right,
                 ${scaleBright(0)},${scaleBright(0.5)},${scaleBright(1)})`;
@@ -84,7 +85,8 @@ class CoolorPicker {
         saturation.style.background = `linear-gradient(to right,
                     ${scaleSat(0)},${scaleSat(1)})`;
 
-        hue.style.backgroundImage = `linear-gradient(to right, #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
+        hue.style.backgroundImage = `linear-gradient(to right, 
+         #FF0000,#FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
     }
 
 
@@ -96,5 +98,32 @@ class CoolorPicker {
 
 
 
+
+
 let randomHex = new CoolorPicker();
 randomHex.randomColors()
+
+//Events
+// Hsl Control we get the data attribute
+// Event Listiner 
+
+randomHex.sliders.forEach(slider => {
+    slider.addEventListener('input', function (e) {
+        // we sort hs control by index number like 0 1 2 3 4 5 
+        const index = e.target.getAttribute('data-hue') ||
+            e.target.getAttribute('data-brigth') ||
+            e.target.getAttribute('data-Satu');
+        let sliders = e.target.parentElement.querySelectorAll('input[type="range"]')
+        const hue = sliders[0];
+        const brigth = sliders[1];
+        const satu = sliders[2];
+        const bgColor = colorDivs[index].querySelector("h2").innerText;
+
+        let color = chroma(bgColor)
+            .set('hsl.h', hue.value)
+            .set('hsl.l', brigth.value)
+            .set('hsl.s', satu.value);
+            colorDivs[index].style.backgroundColor=color;
+
+    })
+})
