@@ -1,9 +1,9 @@
 
-this.colorDivs = document.querySelectorAll('.color');
+
 
 
 class CoolorPicker {
-    constructor(colorDivs) {
+    constructor() {
         this.colorDivs = document.querySelectorAll('.color');
         this.currentHexes = document.querySelectorAll('.color h2');
         this.generateBtn = document.querySelectorAll('.generate');
@@ -14,7 +14,10 @@ class CoolorPicker {
 
 
 
-    //Methods
+    /*Methods */
+
+
+
     //Bulding HexColor Gen with out library 
     /*     generateHex() {
             const hexLetters = '0123456789ABCDEF'
@@ -89,6 +92,20 @@ class CoolorPicker {
          #FF0000,#FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
     }
 
+    updateTextUi(index) {
+        const activeDiv = this.colorDivs[index]
+        const color = chroma(activeDiv.style.backgroundColor)
+        const textHex = activeDiv.querySelector('h2');
+        const icons = activeDiv.querySelectorAll('.controls button')
+        textHex.innerHTML=color.hex()
+        // Check contract
+        this.checkTextContrast(color,textHex);
+        // Check contract
+        for (const icon of icons) {
+            this.checkTextContrast(color,icon);
+          }
+    }
+
 
 }
 
@@ -97,16 +114,13 @@ class CoolorPicker {
 
 
 
-
-
-
+// create New object 
 let randomHex = new CoolorPicker();
 randomHex.randomColors()
 
-//Events
-// Hsl Control we get the data attribute
-// Event Listiner 
+/* Events */
 
+// Hsl Control we get the data attribute
 randomHex.sliders.forEach(slider => {
     slider.addEventListener('input', function (e) {
         // we sort hs control by index number like 0 1 2 3 4 5 
@@ -117,13 +131,19 @@ randomHex.sliders.forEach(slider => {
         const hue = sliders[0];
         const brigth = sliders[1];
         const satu = sliders[2];
-        const bgColor = colorDivs[index].querySelector("h2").innerText;
+        const bgColor = randomHex.colorDivs[index].querySelector("h2").innerText;
 
         let color = chroma(bgColor)
             .set('hsl.h', hue.value)
             .set('hsl.l', brigth.value)
             .set('hsl.s', satu.value);
-            colorDivs[index].style.backgroundColor=color;
+        randomHex.colorDivs[index].style.backgroundColor = color;
 
+    })
+})
+
+randomHex.colorDivs.forEach((div, index) => {
+    div.addEventListener('change', function () {
+        randomHex.updateTextUi(index)
     })
 })
