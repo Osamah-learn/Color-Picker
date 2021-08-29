@@ -36,11 +36,16 @@ class CoolorPicker {
     }
 
     randomColors() {
+        // we push inital color to array
+        this.initialColors=[]
         this.colorDivs.forEach(div => {
             // we catch the div children element
             const hexText = div.children[0];
             // we declare random variable to get generateHex function
             const randomColor = this.hexGenerator()
+            //Add it to the array
+            this.initialColors.push(chroma(randomColor).hex())
+            
             // We set into Hex text the random color also we make it as abckground
             div.style.backgroundColor = randomColor;
             hexText.innerHTML = randomColor;
@@ -131,7 +136,8 @@ randomHex.sliders.forEach(slider => {
         const hue = sliders[0];
         const brigth = sliders[1];
         const satu = sliders[2];
-        const bgColor = randomHex.colorDivs[index].querySelector("h2").innerText;
+        const bgColor = randomHex.initialColors[index];
+        console.log(`inital array ${bgColor}`);
 
         let color = chroma(bgColor)
             .set('hsl.h', hue.value)
