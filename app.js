@@ -58,7 +58,9 @@ class CoolorPicker {
             const hue = sliders[0];
             const brightness = sliders[1];
             const saturation = sliders[2];
-            this.colorizeSliders(color, hue, brightness, saturation)
+            this.reseteSliders(color, hue, brightness, saturation)
+            // reset inputs
+            
         })
 
 
@@ -73,7 +75,7 @@ class CoolorPicker {
         }
 
     }
-    colorizeSliders(color, hue, brightness, saturation) {
+    reseteSliders(color, hue, brightness, saturation) {
         //Scale Saturation
         const noSat = color.set('hsl.s', 0);
         const fullSat = color.set('hsl.s', 1);
@@ -95,6 +97,10 @@ class CoolorPicker {
 
         hue.style.backgroundImage = `linear-gradient(to right, 
          #FF0000,#FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
+
+         saturation.value = color.hsl()[1];
+         brightness.value = color.hsl()[2];
+         hue.value = color.hsl()[0];
     }
 
     updateTextUi(index) {
@@ -112,6 +118,8 @@ class CoolorPicker {
     }
 
 
+
+    
 }
 
 
@@ -144,6 +152,7 @@ randomHex.sliders.forEach(slider => {
             .set('hsl.l', brigth.value)
             .set('hsl.s', satu.value);
         randomHex.colorDivs[index].style.backgroundColor = color;
+        
 
     })
 })
