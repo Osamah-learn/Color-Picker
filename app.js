@@ -37,7 +37,7 @@ class CoolorPicker {
 
     randomColors() {
         // we push inital color to array
-        this.initialColors=[]
+        this.initialColors = []
         this.colorDivs.forEach(div => {
             // we catch the div children element
             const hexText = div.children[0];
@@ -45,7 +45,7 @@ class CoolorPicker {
             const randomColor = this.hexGenerator()
             //Add it to the array
             this.initialColors.push(chroma(randomColor).hex())
-            
+
             // We set into Hex text the random color also we make it as abckground
             div.style.backgroundColor = randomColor;
             hexText.innerHTML = randomColor;
@@ -58,9 +58,9 @@ class CoolorPicker {
             const hue = sliders[0];
             const brightness = sliders[1];
             const saturation = sliders[2];
-            this.reseteSliders(color, hue, brightness, saturation)
+            this.ColoriseSliders(color, hue, brightness, saturation)
             // reset inputs
-            
+
         })
 
 
@@ -75,7 +75,7 @@ class CoolorPicker {
         }
 
     }
-    reseteSliders(color, hue, brightness, saturation) {
+    ColoriseSliders(color, hue, brightness, saturation) {
         //Scale Saturation
         const noSat = color.set('hsl.s', 0);
         const fullSat = color.set('hsl.s', 1);
@@ -98,9 +98,9 @@ class CoolorPicker {
         hue.style.backgroundImage = `linear-gradient(to right, 
          #FF0000,#FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)`;
 
-         saturation.value = color.hsl()[1];
-         brightness.value = color.hsl()[2];
-         hue.value = color.hsl()[0];
+        saturation.value = color.hsl()[1];
+        brightness.value = color.hsl()[2];
+        hue.value = color.hsl()[0];
     }
 
     updateTextUi(index) {
@@ -108,18 +108,18 @@ class CoolorPicker {
         const color = chroma(activeDiv.style.backgroundColor)
         const textHex = activeDiv.querySelector('h2');
         const icons = activeDiv.querySelectorAll('.controls button')
-        textHex.innerHTML=color.hex()
+        textHex.innerHTML = color.hex()
         // Check contract
-        this.checkTextContrast(color,textHex);
+        this.checkTextContrast(color, textHex);
         // Check contract
         for (const icon of icons) {
-            this.checkTextContrast(color,icon);
-          }
+            this.checkTextContrast(color, icon);
+        }
     }
 
 
 
-    
+
 }
 
 
@@ -152,8 +152,8 @@ randomHex.sliders.forEach(slider => {
             .set('hsl.l', brigth.value)
             .set('hsl.s', satu.value);
         randomHex.colorDivs[index].style.backgroundColor = color;
-        
-
+//Colorize inputs // sliders 
+randomHex.ColoriseSliders(color,hue,brigth,satu)
     })
 })
 
