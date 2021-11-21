@@ -7,7 +7,8 @@ class CoolorPicker {
         this.colorDivs = document.querySelectorAll('.color');
         this.currentHexes = document.querySelectorAll('.color h2');
         this.generateBtn = document.querySelectorAll('.generate');
-        this.sliders = document.querySelectorAll('input[type="range"]')
+        this.sliders = document.querySelectorAll('input[type="range"]');
+        this.popup = document.querySelector('.copy-container')
         this.initialColors;
     }
 
@@ -117,8 +118,24 @@ class CoolorPicker {
         }
     }
 
-
-
+    copyToClipboard(hex){
+        console.log('its work');
+      const el= document.createElement('textarea');
+      el.value = hex.innerText;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      // Pop Up animation
+      this.poppingUp()
+      
+    }
+     poppingUp() {
+        this.popup.classList.add("active");
+        setTimeout(() => {
+            this.popup.classList.remove("active");
+        }, 1500);
+      }
 
 }
 
@@ -162,3 +179,11 @@ randomHex.colorDivs.forEach((div, index) => {
         randomHex.updateTextUi(index)
     })
 })
+
+// Add event listnor to current Hex for show active copy Popup
+randomHex.currentHexes.forEach(hex => {
+    hex.addEventListener('click',()=>{
+     randomHex.copyToClipboard(hex);
+    })
+})
+
